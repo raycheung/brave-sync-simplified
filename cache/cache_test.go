@@ -16,7 +16,7 @@ type CacheTestSuite struct {
 }
 
 func (suite *CacheTestSuite) SetupSuite() {
-	suite.cache = cache.NewCache(cache.NewRedisClient())
+	suite.cache = cache.NewCache(cache.NewMemCache())
 }
 
 func (suite *CacheTestSuite) TestSetTypeMtime() {

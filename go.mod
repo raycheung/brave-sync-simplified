@@ -12,6 +12,7 @@ require (
 	github.com/getsentry/sentry-go v0.39.0
 	github.com/go-chi/chi/v5 v5.2.5
 	github.com/google/uuid v1.6.0
+	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/prometheus/client_golang v1.23.2
 	github.com/redis/go-redis/v9 v9.17.0
 	github.com/rs/zerolog v1.34.0
