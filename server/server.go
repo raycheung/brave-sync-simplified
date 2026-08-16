@@ -64,7 +64,7 @@ func setupRouter(ctx context.Context, logger *zerolog.Logger) (context.Context, 
 	r.Use(batware.BearerToken)
 	r.Use(middleware.CommonResponseHeaders)
 
-	db, err := datastore.NewDynamo()
+	db, err := datastore.NewBolt()
 	if err != nil {
 		sentry.CaptureException(err)
 		log.Panic().Err(err).Msg("Must be able to init datastore to start")
@@ -79,7 +79,7 @@ func setupRouter(ctx context.Context, logger *zerolog.Logger) (context.Context, 
 
 	r.Mount("/v2", controller.SyncRouter(
 		cache,
-		datastore.NewDatastoreWithPrometheus(db, "dynamo")))
+		datastore.NewDatastoreWithPrometheus(db, "bolt")))
 	r.Get("/metrics", batware.Metrics())
 
 	log.Info().
